@@ -6,7 +6,7 @@ var config_stk = ['mbbank', 'momo','vietinbank','vietcombank'];
 var set_1 = {
     fullname: 'Nguyễn Phụ Mạnh',
     username: 'ManhKenZ',
-    website: 'ManhKenZ.github.io',
+    website: 'manhkenz.github.io',
     zalo: '0395904226',
     avatar: 'https://img.upanh.tv/2023/12/17/F1A4CED5-18E2-46AA-8EBE-97B5DD195562.png',
     facebook: 'https://fb.com/KenzDev',
@@ -36,3 +36,4 @@ var set_3 = {
     }
 };
 //=========================================================//
+
