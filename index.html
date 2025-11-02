@@ -1,4 +1,6 @@
-
+<script>
+<!--
+document.write(unescape("
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -12,16 +14,14 @@
   <!-- Open Graph (Facebook, Zalo, Messenger...) -->
   <meta property="og:title" content="Profile Thông Tin Thanh Toán - hlisme.site">
   <meta property="og:description" content="Trang thông tin thanh toán Vietcombank - Quét mã QR hoặc sao chép số tài khoản nhanh chóng.">
-  <meta property="og:image" content="https://i.ibb.co/8n7Jg9vy/B-a.jpg"> <!-- link ảnh thumbnail -->
+  <meta property="og:image" content="https://i.ibb.co/8n7Jg9vy/B-a.jpg">
   <meta property="og:url" content="https://manhkenz.github.io">
   <meta property="og:type" content="website">
 
-    <!-- Favicon cho tất cả định dạng -->
-    <link rel="icon" type="image/png" sizes="32x32"     href="https://i.ibb.co/MkFwmL94/Icon.png">
-    <link rel="icon" type="image/png" sizes="16x16"     href="https://i.ibb.co/MkFwmL94/Icon.png">
-    <link rel="apple-touch-icon" href="https://i.ibb.co/MkFwmL94/Icon.png">
-    <link rel="shortcut icon" href="https://i.ibb.co/MkFwmL94/Icon.png">
-
+  <!-- Favicon (icon nhỏ trên tab trình duyệt) -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/MkFwmL94/Icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -587,20 +587,58 @@
         });
 
         // Nút tải xuống QR
-        document.getElementById('downloadQR').addEventListener('click', () => {
-            const qrCanvas = document.querySelector('#qr-code-container canvas');
-            if (qrCanvas) {
-                const link = document.createElement('a');
-                link.href = qrCanvas.toDataURL("image/png");
-                link.download = "ManhKenZ_Banking.png";
-                link.click();
-            } else {
-                feedbackMessage.textContent = "⚠️ QR chưa sẵn sàng!";
-                setTimeout(() => feedbackMessage.textContent = '', 3000);
-            }
-        });
+// Nút tải xuống QR
+document.getElementById('downloadQR').addEventListener('click', () => {
+    const qrCanvas = document.querySelector('#qr-code-container canvas');
+    if (qrCanvas) {
+        // Tạo canvas mới để thêm viền
+        const borderSize = 15; // cách lề ảnh để bo góc
+        const newCanvas = document.createElement('canvas');
+        const ctx = newCanvas.getContext('2d');
+
+        // Kích thước canvas mới (lớn hơn ảnh QR để chứa viền)
+        newCanvas.width = qrCanvas.width + borderSize * 2;
+        newCanvas.height = qrCanvas.height + borderSize * 2;
+
+        // Vẽ nền trong suốt
+        ctx.clearRect(0, 0, newCanvas.width, newCanvas.height);
+
+        // Vẽ viền bo góc màu đỏ
+        const borderRadius = 30; // độ bo góc
+        ctx.lineWidth = 50; // độ dày viền
+        ctx.strokeStyle = 'green'; // màu đỏ
+
+        // Bo góc
+        ctx.beginPath();
+        ctx.moveTo(borderSize + borderRadius, borderSize);
+        ctx.lineTo(newCanvas.width - borderSize - borderRadius, borderSize);
+        ctx.quadraticCurveTo(newCanvas.width - borderSize, borderSize, newCanvas.width - borderSize, borderSize + borderRadius);
+        ctx.lineTo(newCanvas.width - borderSize, newCanvas.height - borderSize - borderRadius);
+        ctx.quadraticCurveTo(newCanvas.width - borderSize, newCanvas.height - borderSize, newCanvas.width - borderSize - borderRadius, newCanvas.height - borderSize);
+        ctx.lineTo(borderSize + borderRadius, newCanvas.height - borderSize);
+        ctx.quadraticCurveTo(borderSize, newCanvas.height - borderSize, borderSize, newCanvas.height - borderSize - borderRadius);
+        ctx.lineTo(borderSize, borderSize + borderRadius);
+        ctx.quadraticCurveTo(borderSize, borderSize, borderSize + borderRadius, borderSize);
+        ctx.stroke();
+
+        // Vẽ ảnh QR vào giữa
+        ctx.drawImage(qrCanvas, borderSize, borderSize);
+
+        // Xuất ảnh
+        const link = document.createElement('a');
+        link.href = newCanvas.toDataURL("image/png");
+        link.download = "ManhKenZ_Banking.png";
+        link.click();
+    } else {
+        feedbackMessage.textContent = "⚠️ QR chưa sẵn sàng!";
+        setTimeout(() => feedbackMessage.textContent = '', 3000);
+    }
+});
     });
     </script>
 </body>
 
 </html>
+"));
+//-->
+</script>
