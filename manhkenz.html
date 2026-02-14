@@ -9,18 +9,17 @@
     <title>RED CARD</title>
     <!-- Favicon -->
     <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
-    <link rel="icon" href="https://h.top4top.io/p_3686sg5yo1.png" sizes="any">
-    <link rel="icon" type="image/png" href="icon2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" sizes="32x32" href="https://l.top4top.io/p_3697xu4r61.png">
     <!-- Mô tả website -->
-    <meta name="description"
-        content="Mạnh KenZ">
+    <meta name="description" content="RED CARD">
     <!-- Từ khóa -->
     <meta name="keywords" content="RED CARD, my profile, my card, profile, card">
     <!-- Tác giả -->
     <meta name="author" content="RED CARD">
     <meta property="og:title" content="RED CARD">
     <meta property="og:description" content="Mạnh Nguyễn">
-    <meta property="og:image" content="https://h.top4top.io/p_3686sg5yo1.png">
+    <meta property="og:image" content="https://l.top4top.io/p_3697xu4r61.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manhkenz.github.io/manhkenz">
     <meta property="og:site_name" content="RED CARD">
@@ -268,8 +267,10 @@
             }
 
             .main-content {
-                max-width: 1200px;   /* giới hạn độ rộng */
-                margin-right: auto;  /* căn giữa phần còn lại */
+                max-width: 1200px;
+                /* giới hạn độ rộng */
+                margin-right: auto;
+                /* căn giữa phần còn lại */
             }
 
             .menu-toggle {
@@ -337,6 +338,7 @@
             width: fit-content;
             margin: 0 auto;
         }
+
         @font-face {
             font-family: 'Wolfsbane';
             src: url('fonts/VL-WOLFSBANE.otf') format('opentype');
@@ -355,6 +357,7 @@
             position: relative;
             z-index: 1;
         }
+
         @font-face {
             font-family: 'GoAround';
             src: url('fonts/Go.ttf') format('truetype');
@@ -800,104 +803,105 @@
                 padding: 10px;
             }
         }
+
         .loading-screen {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-          transition: all 0.8s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: all 0.8s ease;
         }
 
         .loading-screen.hidden {
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .loading-content {
-          text-align: center;
+            text-align: center;
         }
 
         .loading-logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
         .loading-logo i {
-          font-size: 2.5rem;
-          color: #ff0000ee;
+            font-size: 2.5rem;
+            color: #ff0000ee;
         }
 
         .loading-logo span {
-          font-size: 1.8rem;
-          color: #fff;
-          font-weight: 700;
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 700;
         }
 
         .loading-bar {
-          width: 250px;
-          height: 4px;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 2px;
-          overflow: hidden;
-          margin: 0 auto 20px;
+            width: 250px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto 20px;
         }
 
         .loading-progress {
-          width: 0;
-          height: 100%;
-          background: linear-gradient(90deg, #ff0000ee, #de1818);
-          border-radius: 2px;
-          animation: loadingProgress 3s ease-in-out forwards;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000ee, #de1818);
+            border-radius: 2px;
+            animation: loadingProgress 3s ease-in-out forwards;
         }
 
         .loading-text {
-          color: #ccc;
-          font-size: 1rem;
+            color: #ccc;
+            font-size: 1rem;
         }
 
         @keyframes loadingProgress {
-          0% {
-            width: 0%;
-          }
+            0% {
+                width: 0%;
+            }
 
-          100% {
-            width: 100%;
-          }
+            100% {
+                width: 100%;
+            }
         }
 
         #particleCanvas {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
         }
 
         .loading-logo span {
-          font-family: sans-serif;
-          font-size: 32px;
-          font-weight: 600;
+            font-family: sans-serif;
+            font-size: 32px;
+            font-weight: 600;
 
-          color: #ff2b2b;
+            color: #ff2b2b;
 
-          text-shadow:
-            0 0 5px rgba(255, 43, 43, 0.377),
-            0 0 12px rgba(255, 43, 43, 0.377),
-            0 0 24px rgba(255, 43, 43, 0.377);
+            text-shadow:
+                0 0 5px rgba(255, 43, 43, 0.377),
+                0 0 12px rgba(255, 43, 43, 0.377),
+                0 0 24px rgba(255, 43, 43, 0.377);
 
-          letter-spacing: 2px;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -926,7 +930,7 @@
         <div class="header">
             <div class="main-logo-container">
                 <div class="main-logo-ring"></div>
-                <img src="https://a.top4top.io/p_3686vnhxb1.jpg" class="main-logo" alt="RED CARD Logo">
+                <img src="https://a.top4top.io/p_3697gidex1.png" class="main-logo" alt="RED CARD Logo">
             </div>
         </div>
         <div>
@@ -949,131 +953,135 @@
                 <div class="progress-bar">
                     <div class="progress" id="progress-bar"></div>
                 </div>
-            <div class="error-message hide" id="error-message"></div>
-            <div class="success-message hide" id="success-message"></div>
-        </div>
+                <div class="error-message hide" id="error-message"></div>
+                <div class="success-message hide" id="success-message"></div>
+            </div>
 
-        <div class="features-section">
-            <h3 class="features-title">
-                <i class="fas fa-info"></i>
-                Info
-            </h3>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                        <i class="fab fa-facebook"></i>
+            <div class="features-section">
+                <h3 class="features-title">
+                    <i class="fas fa-info"></i>
+                    Info
+                </h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h4 class="feature-title"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Facebook</h4>
                     </div>
-                    <h4 class="feature-title" style="display:flex; align-items:center; justify-content:center; gap:10px;">Facebook</h4>
-                </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon" style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                        <i class="fab fa-tiktok"></i>
+                    <div class="feature-card" onclick="openTikTok()" style="cursor:pointer;">
+                        <div class="feature-icon"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h4 class="feature-title"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Tik Tok</h4>
                     </div>
-                    <h4 class="feature-title" style="display:flex; align-items:center; justify-content:center; gap:10px;">Tik Tok</h4>
-                </div>
 
-                <div class="feature-card">
-                <h4 class="feature-icon"
-                    style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                    <div class="feature-card">
+                        <h4 class="feature-icon"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">
 
-                    <img src="zalo.svg"
-                         alt="Zalo"
-                         style="width:40px; height:40px; object-fit:contain;">
-                    Zalo
-                </h4>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon" style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                        <i class="fas fa-gift"></i>
+                            <img src="zalo.svg" alt="Zalo" style="width:40px; height:40px; object-fit:contain;">
+                            Zalo
+                        </h4>
                     </div>
-                    <h4 class="feature-title" style="display:flex; align-items:center; justify-content:center; gap:10px;">Tặng Quà</h4>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h4 class="feature-title"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Tặng Quà</h4>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer">
-            © 2026 - RED CARD
+            <div class="footer">
+                © 2026 - RED CARD
+            </div>
         </div>
-    </div>
 </body>
-  <script>
+<script>
     function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 15;
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 15;
 
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
 
-        const size = Math.random() * 4 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 5;
-        const duration = Math.random() * 3 + 4;
+            const size = Math.random() * 4 + 1;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 4;
 
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.animationDuration = `${duration}s`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
 
-        const colors = ['#ff0000', '#de1818', '#ff00001a'];
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.background = randomColor;
+            const colors = ['#ff0000', '#de1818', '#ff00001a'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = randomColor;
 
-        particlesContainer.appendChild(particle);
-      }
+            particlesContainer.appendChild(particle);
+        }
     }
 
     const params = new URLSearchParams(window.location.search);
     const msg = params.get("msg");
 
     if (msg) {
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.style.display = "block";
+        const toast = document.getElementById("toast");
+        toast.textContent = msg;
+        toast.style.display = "block";
     }
     // Loading Screen
     document.addEventListener('DOMContentLoaded', function () {
-      const loadingScreen = document.getElementById('loadingScreen');
+        const loadingScreen = document.getElementById('loadingScreen');
 
-      // Simulate loading time
-      setTimeout(function () {
-        loadingScreen.classList.add('hidden');
+        // Simulate loading time
+        setTimeout(function () {
+            loadingScreen.classList.add('hidden');
 
-        // Initialize website after loading
-        function initializeWebsite() {
-          initializeParticleSystem();
-        }
+            // Initialize website after loading
+            function initializeWebsite() {
+                initializeParticleSystem();
+            }
 
-      }, 3000);
+        }, 3000);
     });
-  </script>
-  <script>
+</script>
+<script>
     function createSnowflake() {
-      const snowflake = document.createElement('div');
-      snowflake.textContent = '🌸';
-      snowflake.classList.add('snowflake');
+        const snowflake = document.createElement('div');
+        snowflake.textContent = '🌸';
+        snowflake.classList.add('snowflake');
 
-      // Tạo vị trí, kích thước, tốc độ rơi và độ mờ ngẫu nhiên
-      const size = Math.random() * 20 + 5;
-      const duration = Math.random() * 5 + 5; // 5–10s
-      const delay = Math.random() * 3;
-      const opacity = Math.random() * 0.7 + 0.3;
+        // Tạo vị trí, kích thước, tốc độ rơi và độ mờ ngẫu nhiên
+        const size = Math.random() * 20 + 5;
+        const duration = Math.random() * 5 + 5; // 5–10s
+        const delay = Math.random() * 3;
+        const opacity = Math.random() * 0.7 + 0.3;
 
-      snowflake.style.left = Math.random() * 100 + 'vw';
-      snowflake.style.fontSize = size + 'px';
-      snowflake.style.opacity = opacity;
-      snowflake.style.animationDuration = duration + 's';
-      snowflake.style.animationDelay = delay + 's';
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.fontSize = size + 'px';
+        snowflake.style.opacity = opacity;
+        snowflake.style.animationDuration = duration + 's';
+        snowflake.style.animationDelay = delay + 's';
 
-      document.body.appendChild(snowflake);
+        document.body.appendChild(snowflake);
 
-      // Xóa khi rơi xong để tránh đầy bộ nhớ
-      snowflake.addEventListener('animationend', () => snowflake.remove());
+        // Xóa khi rơi xong để tránh đầy bộ nhớ
+        snowflake.addEventListener('animationend', () => snowflake.remove());
     }
 
     // CSS hiệu ứng rơi và đung đưa
@@ -1111,8 +1119,19 @@
     }`;
     document.head.appendChild(style);
 
-    // Rơi liên tục: 1 bông mỗi 200ms
     setInterval(createSnowflake, 100);
+</script>
+    <script>
+        function openTikTok() {
+            const username = "yourusername";
+            const appLink = "tiktok://user?username=pmanh8386" + username;
+            const webLink = "https://www.tiktok.com/@pmanh8386" + username;
+            window.location.href = appLink;
+        
+            setTimeout(function () {
+                window.location.href = webLink;
+            }, 1500);
+        }
     </script>
 </body>
 
