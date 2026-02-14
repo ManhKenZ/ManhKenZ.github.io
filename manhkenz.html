@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
     <link rel="icon" sizes="32x32" href="https://l.top4top.io/p_3697xu4r61.png">
     <!-- Mô tả website -->
-    <meta name="description" content="RED CARD">
+    <meta name="description" content="Thẻ cá nhân RED CARD - Tạo profile cá nhân của bạn ngay hôm nay!">
     <!-- Từ khóa -->
     <meta name="keywords" content="RED CARD, my profile, my card, profile, card">
     <!-- Tác giả -->
@@ -903,6 +903,37 @@
 
             letter-spacing: 2px;
         }
+
+        #qrOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
+
+        #qrOverlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #qrBox {
+            background: #111;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, .6);
+            transform: scale(0.9);
+            transition: 0.3s ease;
+        }
+
+        #qrOverlay.active #qrBox {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -990,7 +1021,7 @@
                         </h4>
                     </div>
 
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="createQR()" style="cursor:pointer;">
                         <div class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
                             <i class="fas fa-gift"></i>
@@ -998,6 +1029,7 @@
                         <h4 class="feature-title"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">Tặng Quà</h4>
                     </div>
+                    <div id="qrContainer" style="margin-top:20px; text-align:center;"></div>
                 </div>
             </div>
 
@@ -1121,41 +1153,82 @@
 
     setInterval(createSnowflake, 100);
 </script>
-    <script>
-        function openTikTok() {
-            const username = "pmanh8386";
-            const appLink = "tiktok://user?username=pmanh8386" + username;
-            const webLink = "https://www.tiktok.com/@pmanh8386" + username;
-            window.location.href = appLink;
-        
-            setTimeout(function () {
-                window.location.href = webLink;
-            }, 1500);
-        }
+<script>
+    function openTikTok() {
+        const username = "pmanh8386";
+        const appLink = "tiktok://user?username=pmanh8386" + username;
+        const webLink = "https://www.tiktok.com/@pmanh8386" + username;
+        window.location.href = appLink;
 
-        function openFacebook() {
-            const username = "KenzDev8386";
-            const appLink = "fb://profile/" + username;
-            const webLink = "https://www.facebook.com/" + username;
-            window.location.href = appLink;
-        
-            setTimeout(function () {
-                window.location.href = webLink;
-            }, 1500);
-        }
+        setTimeout(function () {
+            window.location.href = webLink;
+        }, 1500);
+    }
 
-        function openZalo() {
-            const username = "0395904226";
-            const appLink = "zalo://profile/" + username;
-            const webLink = "https://zalo.me/" + username;
-            window.location.href = appLink;
-        
-            setTimeout(function () {
-                window.location.href = webLink;
-            }, 1500);
+    function openFacebook() {
+        const username = "KenzDev8386";
+        const appLink = "fb://profile/" + username;
+        const webLink = "https://www.facebook.com/" + username;
+        window.location.href = appLink;
+
+        setTimeout(function () {
+            window.location.href = webLink;
+        }, 1500);
+    }
+
+    function openZalo() {
+        const username = "0395904226";
+        const appLink = "zalo://profile/" + username;
+        const webLink = "https://zalo.me/" + username;
+        window.location.href = appLink;
+
+        setTimeout(function () {
+            window.location.href = webLink;
+        }, 1500);
+    }
+</script>
+<script>
+    async function createQR() {
+
+        const name = "Mạnh";
+
+        const apiURL = "https://script.google.com/macros/s/AKfycby-M_qQ7L7VXZCXZO8G7jAE8RHQUHCCq7_PDpXJ9oWmn-DPtsLX5pBUHNjO9ASPJ04e/exec?name="
+            + encodeURIComponent(name);
+
+        try {
+
+            const response = await fetch(apiURL);
+            const data = await response.json();
+
+            if (data.status !== "success") {
+                alert("Không tìm thấy người.");
+                return;
+            }
+
+            const maCode = data.maCode;
+
+            const qrURL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
+                + encodeURIComponent(maCode);
+
+            document.getElementById("qrImage").src = qrURL;
+
+            document.getElementById("qrOverlay").classList.add("active");
+
+        } catch (error) {
+            console.error(error);
+            alert("Lỗi kết nối API.");
         }
-    </script>
+    }
+
+    function closeQR() {
+        document.getElementById("qrOverlay").classList.remove("active");
+    }
+</script>
+<div id="qrOverlay" onclick="closeQR()">
+    <div id="qrBox" onclick="event.stopPropagation()">
+        <img id="qrImage" style="width:300px; height:300px; border-radius:12px;">
+    </div>
+</div>
 </body>
-
 
 </html>
