@@ -963,7 +963,7 @@
                     Info
                 </h3>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="openFacebook()" style="cursor:pointer;">
                         <div class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
                             <i class="fab fa-facebook"></i>
@@ -981,7 +981,7 @@
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">Tik Tok</h4>
                     </div>
 
-                    <div class="feature-card">
+                    <div class="feature-card" onclick="openZalo()" style="cursor:pointer;">
                         <h4 class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
 
@@ -1123,9 +1123,31 @@
 </script>
     <script>
         function openTikTok() {
-            const username = "yourusername";
+            const username = "pmanh8386";
             const appLink = "tiktok://user?username=pmanh8386" + username;
             const webLink = "https://www.tiktok.com/@pmanh8386" + username;
+            window.location.href = appLink;
+        
+            setTimeout(function () {
+                window.location.href = webLink;
+            }, 1500);
+        }
+
+        function openFacebook() {
+            const username = "KenzDev8386";
+            const appLink = "fb://profile/" + username;
+            const webLink = "https://www.facebook.com/" + username;
+            window.location.href = appLink;
+        
+            setTimeout(function () {
+                window.location.href = webLink;
+            }, 1500);
+        }
+
+        function openZalo() {
+            const username = "0395904226";
+            const appLink = "zalo://profile/" + username;
+            const webLink = "https://zalo.me/" + username;
             window.location.href = appLink;
         
             setTimeout(function () {
