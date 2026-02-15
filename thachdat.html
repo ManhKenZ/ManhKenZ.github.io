@@ -1210,9 +1210,11 @@
     }
 
     function openInstagram() {
-        const username = "https://www.instagram.com/thachdat299?igsh=aHM5ZmFsYWJtZ293&utm_source=qr";
+        const username = "thachdat299";
+
         const appLink = "instagram://user?username=" + username;
         const webLink = "https://www.instagram.com/" + username;
+
         window.location.href = appLink;
 
         setTimeout(function () {
@@ -1221,11 +1223,11 @@
     }
 
     function openLocket() {
-        const username = "https://www.instagram.com/thachdat299?igsh=aHM5ZmFsYWJtZ293&utm_source=qr";
-        const appLink = "instagram://user?username=" + username;
-        const webLink = "https://www.instagram.com/" + username;
+        const appLink = "locket://";
+        const webLink = "https://locket.cam/galaxy_luxury";
+    
         window.location.href = appLink;
-
+    
         setTimeout(function () {
             window.location.href = webLink;
         }, 1500);
