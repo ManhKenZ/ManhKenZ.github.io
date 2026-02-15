@@ -1000,15 +1000,6 @@
                     Info
                 </h3>
                 <div class="features-grid">
-                    <div class="feature-card" onclick="openFacebook()" style="cursor:pointer;">
-                        <div class="feature-icon"
-                            style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                            <i class="fab fa-facebook"></i>
-                        </div>
-                        <h4 class="feature-title"
-                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Facebook</h4>
-                    </div>
-
                     <div class="feature-card" onclick="openTikTok()" style="cursor:pointer;">
                         <div class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
@@ -1164,19 +1155,8 @@
         }, 1500);
     }
 
-    function openFacebook() {
-        const username = "100087890537475";
-        const appLink = "fb://profile/" + username;
-        const webLink = "https://www.facebook.com/" + username;
-        window.location.href = appLink;
-
-        setTimeout(function () {
-            window.location.href = webLink;
-        }, 1500);
-    }
-
     function openZalo() {
-        const username = "0395904226";
+        const username = "0867512961";
         const appLink = "zalo://profile/" + username;
         const webLink = "https://zalo.me/" + username;
         window.location.href = appLink;
