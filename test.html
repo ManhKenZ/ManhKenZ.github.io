@@ -1503,56 +1503,30 @@ setTimeout(updateLoader, 300); // small initial delay
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
-async function captureFullPageAdvanced() {
+async function captureQRSection() {
 
     const overlay = document.getElementById("qrOverlay");
+    const button = overlay.querySelector("button");
 
-    // 1️⃣ Ẩn overlay để không bị dính vào ảnh
-    overlay.style.visibility = "hidden";
+    // Ẩn nút trước khi chụp
+    button.style.display = "none";
 
-    // 2️⃣ Tạo flash effect
-    const flash = document.createElement("div");
-    flash.style.position = "fixed";
-    flash.style.top = 0;
-    flash.style.left = 0;
-    flash.style.width = "100%";
-    flash.style.height = "100%";
-    flash.style.background = "white";
-    flash.style.opacity = "0.8";
-    flash.style.zIndex = "999999";
-    flash.style.transition = "opacity 0.4s ease";
-    document.body.appendChild(flash);
-
-    setTimeout(() => flash.style.opacity = "0", 50);
-
-    // 3️⃣ Tính full chiều cao trang
-    const fullHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-    );
-
-    // 4️⃣ Capture với scale cao (nét hơn)
-    const canvas = await html2canvas(document.body, {
-        scrollY: -window.scrollY,
-        windowHeight: fullHeight,
-        height: fullHeight,
-        scale: window.devicePixelRatio, // tăng độ nét
+    const canvas = await html2canvas(overlay, {
+        backgroundColor: null,
+        scale: 2,          // tăng độ nét
         useCORS: true
     });
 
-    // 5️⃣ Xóa flash
-    setTimeout(() => flash.remove(), 400);
+    // Hiện lại nút
+    button.style.display = "block";
 
-    // 6️⃣ Tải ảnh
     const link = document.createElement("a");
-    link.download = "Full-Website-HD.png";
-    link.href = canvas.toDataURL("image/png", 1.0);
+    link.download = "QR-Techcombank.png";
+    link.href = canvas.toDataURL("image/png");
     link.click();
-
-    // 7️⃣ Hiện lại overlay
-    overlay.style.visibility = "visible";
 }
 </script>
+
 
         <!-- Nút chụp -->
 <div id="qrOverlay" onclick="closeQR()">
@@ -1570,7 +1544,7 @@ async function captureFullPageAdvanced() {
                     box-shadow:0 0 30px rgba(255,0,0,0.4);">
 
         <!-- Nút nằm dưới QR và căn giữa -->
-        <button onclick="captureFullPageAdvanced()"
+        <button onclick="captureQRSection()"
                 style="display:block;
                        margin:25px auto 0;
                        padding:12px 26px;
@@ -1580,9 +1554,8 @@ async function captureFullPageAdvanced() {
                        color:white;
                        font-weight:bold;
                        cursor:pointer;">
-            📸 Chụp toàn trang HD
+            📸 Chụp QR
         </button>
-
     </div>
 </div>
 
