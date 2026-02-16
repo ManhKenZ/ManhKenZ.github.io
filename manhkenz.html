@@ -38,9 +38,10 @@
             --card: #1a1a1a;
             --text: #ffffff;
             --muted: #ffffff;
-            --primary: #ff0000;
-            --secondary: #8412c6a3;
+            --primary: #df0a0a;
+            --secondary: #8412c667;
             --accent: #a812a1;
+            --accent2: #b72323;
         }
 
         * {
@@ -937,22 +938,234 @@
         #qrOverlay.active #qrBox {
             transform: scale(1);
         }
+
+        /* =========================
+           VARIABLES & RESET
+        ========================= */
+
+        /* =========================
+           BODY
+        ========================= */
+
+        /* =========================
+           BACKGROUND GRID TEXTURE
+        ========================= */
+
+        .grid-overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        
+          background-image: 
+            linear-gradient(rgba(0, 136, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 136, 255, 0.03) 1px, transparent 1px);
+        
+          background-size: 30px 30px;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        /* =========================
+           GLOW CARD EXAMPLE
+        ========================= */
+
+        .loader-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner-box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        /* RINGS */
+
+        .circle-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        /* Outer Glow Ring */
+
+        .ring-1 {
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-top: 2px solid #b11226;
+            border-left: 2px solid transparent;
+            border-right: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 35s linear infinite;
+            box-shadow: 0 0 15px rgba(0, 136, 255, 0.2);
+        }
+
+        /* The Conic Gradient Ring (The "Tail" Effect) */
+
+        .ring-2 {
+            width: 85%;
+            height: 85%;
+            border-radius: 50%;
+            position: absolute;
+        
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                transparent 40%,
+                var(--accent2) 60%,
+                transparent 100%
+            );
+        
+            mask: radial-gradient(
+                farthest-side,
+                transparent calc(100% - 4px),
+                #fff calc(100% - 3px)
+            );
+        
+            -webkit-mask: radial-gradient(
+                farthest-side,
+                transparent calc(100% - 4px),
+                #fff calc(100% - 3px)
+            );
+        
+            animation: spin 1.5s linear infinite;
+        }
+
+        /* Inner Dashed Ring */
+
+        .ring-3 {
+            width: 65%;
+            height: 65%;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: spinReverse 10s linear infinite;
+        }
+        .percentage {
+            position: absolute;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--primary);
+            z-index: 10;
+            transform: translateY(-20px); /* Move up slightly to clear the core */
+        }
+
+        .status-text {
+            margin-top: 15px; /* Spacing from center */
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: #ed0404f9;
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 80px; /* Position inside ring or below */
+            animation: blinkText 2s infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+        
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinReverse {
+            0% {
+                transform: rotate(360deg);
+            }
+        
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        @keyframes blinkText {
+            0%,
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px var(--accent);
+            }
+        
+            50% {
+                opacity: 0.5;
+                text-shadow: none;
+            }
+        }
+
+        /*
+        ---FINISH STATES ---
+        */
+
+        .loader-container.finished .ring-1,
+        .loader-container.finished .ring-2,
+        .loader-container.finished .ring-3 {
+            opacity: 0;
+            transition: all 0.8s ease-out;
+            transform: scale(1.5); /* Rings expand out */
+        }
+        .loader-container.finished .core {
+            transform: scale(30); /* Flash effect */
+            opacity: 0;
+            transition: all 0.5s ease-out;
+        }
+
+        .loader-container.finished .percentage {
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent);
+            transform: scale(1.1) translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .loader-container.finished .status-text {
+            animation: none;
+            opacity: 1;
+            letter-spacing: 6px;
+            transition: all 0.5s ease;
+            color: var(--white);
+        }
+        #loaderContainer {
+          position: fixed;
+          inset: 0;
+          background: #000; /* hoặc nền của bạn */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #loaderContainer.finished {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
     </style>
 </head>
 
 <body>
         <canvas id="particleCanvas"></canvas>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <i class="fas fa-id-card"></i>
-                <span>RED CARD</span>
-            </div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-            <p class="loading-text">Loading...</p>
+    <div class="grid-overlay"></div>
+
+    <div class="loader-container" id="loaderContainer">
+        <div class="spinner-box">
+            <div class="circle-border ring-1"></div>
+            <div class="circle-border ring-2"></div>
+            <div class="circle-border ring-3"></div>
+
+            <div class="percentage" id="counter">0%</div>
+            <div class="status-text" id="status">RED CARD</div>
         </div>
     </div>
 
@@ -1021,8 +1234,7 @@
                     <div class="feature-card" onclick="openZalo()" style="cursor:pointer;">
                         <h4 class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
-
-                            <img src="zalo.svg" alt="Zalo" style="width:40px; height:40px; object-fit:contain;">
+                            <img src="zalo.svg" alt="Zalo" style="width:40px; height:40px; object-fit:contain;  filter: invert(16%) sepia(100%) saturate(7000%) hue-rotate(0deg);">
                             Zalo
                         </h4>
                     </div>
@@ -1207,7 +1419,8 @@
             const data = await response.json();
 
             if (data.status !== "success") {
-                alert("Không tìm thấy người.");
+
+                alert("Chưa có mã QR cho người này.");
                 return;
             }
 
@@ -1229,6 +1442,58 @@
     function closeQR() {
         document.getElementById("qrOverlay").classList.remove("active");
     }
+</script>
+<script>
+    const counterElement = document.getElementById('counter');
+
+const statusElement = document.getElementById('status');
+
+const container = document.getElementById('loaderContainer');
+
+let count = 0;
+
+// Simulation of variable Loading speed
+// Returns a random number between min and max
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function updateLoader() {
+  if (count < 100) {
+
+    // Increment by random amount (1-3) to simulate real data
+    let increment = (Math.random() > 0.8) ? 2 : 1;
+
+    count = Math.min(count + increment, 100);
+
+    counterElement.innerText = count + '%';
+
+    // Change text based on progress for realism
+    if (count === 30) statusElement.innerText = "Verifying...";
+    if (count === 70) statusElement.innerText = "Optimizing...";
+    if (count === 90) statusElement.innerText = "Finalizing...";
+
+    // Variable timeout: Sometimes fast, sometimes slow
+    let speed = getRandom(30, 150);
+    if (count === 90) statusElement.innerText = "Finalizing...";
+
+    // Slow down significantly at 99% for dramatic effect
+    if (count > 95) speed = 300;
+
+    setTimeout(updateLoader, speed);
+  } else {
+    finishLoading();
+  }
+} 
+
+function finishLoading() {
+  statusElement.innerText = "RED CARD";
+  container.classList.add('finished');
+}
+
+// Start the Loader
+setTimeout(updateLoader, 300); // small initial delay
 </script>
 <div id="qrOverlay" onclick="closeQR()">
     <div id="qrBox" onclick="event.stopPropagation()">
