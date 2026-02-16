@@ -35,7 +35,9 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <div class="autoMusic">
-        <audio id="music" src="https://raw.githubusercontent.com/ManhKenZ/ManhKenZ.github.io/main/hoa%20c%E1%BB%8F%20m%C3%B9a%20xu%C3%A2n.mp3" autoplay ></audio>
+        <audio id="music"
+            src="https://raw.githubusercontent.com/ManhKenZ/ManhKenZ.github.io/main/hoa%20c%E1%BB%8F%20m%C3%B9a%20xu%C3%A2n.mp3"
+            autoplay></audio>
     </div>
     <style>
         :root {
@@ -957,19 +959,19 @@
         ========================= */
 
         .grid-overlay {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-        
-          background-image: 
-            linear-gradient(rgba(0, 136, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 136, 255, 0.03) 1px, transparent 1px);
-        
-          background-size: 30px 30px;
-          z-index: 0;
-          pointer-events: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+            background-image:
+                linear-gradient(rgba(0, 136, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 136, 255, 0.03) 1px, transparent 1px);
+
+            background-size: 30px 30px;
+            z-index: 0;
+            pointer-events: none;
         }
 
         /* =========================
@@ -994,6 +996,7 @@
             align-items: center;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         /* RINGS */
 
         .circle-border {
@@ -1024,27 +1027,21 @@
             height: 85%;
             border-radius: 50%;
             position: absolute;
-        
-            background: conic-gradient(
-                from 0deg,
-                transparent 0%,
-                transparent 40%,
-                var(--accent2) 60%,
-                transparent 100%
-            );
-        
-            mask: radial-gradient(
-                farthest-side,
-                transparent calc(100% - 4px),
-                #fff calc(100% - 3px)
-            );
-        
-            -webkit-mask: radial-gradient(
-                farthest-side,
-                transparent calc(100% - 4px),
-                #fff calc(100% - 3px)
-            );
-        
+
+            background: conic-gradient(from 0deg,
+                    transparent 0%,
+                    transparent 40%,
+                    var(--accent2) 60%,
+                    transparent 100%);
+
+            mask: radial-gradient(farthest-side,
+                    transparent calc(100% - 4px),
+                    #fff calc(100% - 3px));
+
+            -webkit-mask: radial-gradient(farthest-side,
+                    transparent calc(100% - 4px),
+                    #fff calc(100% - 3px));
+
             animation: spin 1.5s linear infinite;
         }
 
@@ -1057,6 +1054,7 @@
             border-radius: 50%;
             animation: spinReverse 10s linear infinite;
         }
+
         .percentage {
             position: absolute;
             color: var(--white);
@@ -1064,24 +1062,28 @@
             font-weight: 700;
             text-shadow: 0 0 10px var(--primary);
             z-index: 10;
-            transform: translateY(-20px); /* Move up slightly to clear the core */
+            transform: translateY(-20px);
+            /* Move up slightly to clear the core */
         }
 
         .status-text {
-            margin-top: 15px; /* Spacing from center */
+            margin-top: 15px;
+            /* Spacing from center */
             font-size: 0.9rem;
             letter-spacing: 4px;
             color: #ed0404f9;
             text-transform: uppercase;
             position: absolute;
-            bottom: 80px; /* Position inside ring or below */
+            bottom: 80px;
+            /* Position inside ring or below */
             animation: blinkText 2s infinite;
         }
+
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
             }
-        
+
             100% {
                 transform: rotate(360deg);
             }
@@ -1091,18 +1093,20 @@
             0% {
                 transform: rotate(360deg);
             }
-        
+
             100% {
                 transform: rotate(0deg);
             }
         }
+
         @keyframes blinkText {
+
             0%,
             100% {
                 opacity: 1;
                 text-shadow: 0 0 10px var(--accent);
             }
-        
+
             50% {
                 opacity: 0.5;
                 text-shadow: none;
@@ -1118,10 +1122,13 @@
         .loader-container.finished .ring-3 {
             opacity: 0;
             transition: all 0.8s ease-out;
-            transform: scale(1.5); /* Rings expand out */
+            transform: scale(1.5);
+            /* Rings expand out */
         }
+
         .loader-container.finished .core {
-            transform: scale(30); /* Flash effect */
+            transform: scale(30);
+            /* Flash effect */
             opacity: 0;
             transition: all 0.5s ease-out;
         }
@@ -1140,27 +1147,29 @@
             transition: all 0.5s ease;
             color: var(--white);
         }
+
         #loaderContainer {
-          position: fixed;
-          inset: 0;
-          background: #000; /* hoặc nền của bạn */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-          transition: opacity 0.8s ease, visibility 0.8s ease;
+            position: fixed;
+            inset: 0;
+            background: #000;
+            /* hoặc nền của bạn */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
         #loaderContainer.finished {
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-        <canvas id="particleCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
     <div class="grid-overlay"></div>
 
     <div class="loader-container" id="loaderContainer">
@@ -1239,7 +1248,8 @@
                     <div class="feature-card" onclick="openZalo()" style="cursor:pointer;">
                         <h4 class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                            <img src="zalo.svg" alt="Zalo" style="width:40px; height:40px; object-fit:contain;  filter: invert(16%) sepia(100%) saturate(7000%) hue-rotate(0deg);">
+                            <img src="zalo.svg" alt="Zalo"
+                                style="width:40px; height:40px; object-fit:contain;  filter: invert(16%) sepia(100%) saturate(7000%) hue-rotate(0deg);">
                             Zalo
                         </h4>
                     </div>
@@ -1250,7 +1260,7 @@
                             <i class="fas fa-gift"></i>
                         </div>
                         <h4 class="feature-title"
-                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Lì Xì</h4>
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Tặng Quà</h4>
                     </div>
                     <div id="qrContainer" style="margin-top:20px; text-align:center;"></div>
                 </div>
@@ -1374,7 +1384,7 @@
     }`;
     document.head.appendChild(style);
 
-    setInterval(createSnowflake, 100);
+    setInterval(createSnowflake, 50);
 </script>
 <script>
     function openTikTok() {
@@ -1451,61 +1461,91 @@
 <script>
     const counterElement = document.getElementById('counter');
 
-const statusElement = document.getElementById('status');
+    const statusElement = document.getElementById('status');
 
-const container = document.getElementById('loaderContainer');
+    const container = document.getElementById('loaderContainer');
 
-let count = 0;
+    let count = 0;
 
-// Simulation of variable Loading speed
-// Returns a random number between min and max
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+    function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
-function updateLoader() {
-  if (count < 100) {
+    function updateLoader() {
+        if (count < 100) {
 
-    // Increment by random amount (1-3) to simulate real data
-    let increment = (Math.random() > 0.8) ? 2 : 1;
+            // Increment by random amount (1-3) to simulate real data
+            let increment = (Math.random() > 0.8) ? 2 : 1;
+            count = Math.min(count + increment, 100);
+            counterElement.innerText = count + '%';
 
-    count = Math.min(count + increment, 100);
+            if (count === 30) statusElement.innerText = "Verifying...";
+            if (count === 70) statusElement.innerText = "Optimizing...";
+            if (count === 90) statusElement.innerText = "Finalizing...";
 
-    counterElement.innerText = count + '%';
+            let speed = getRandom(30, 150);
+            if (count === 90) statusElement.innerText = "Finalizing...";
 
-    // Change text based on progress for realism
-    if (count === 30) statusElement.innerText = "Verifying...";
-    if (count === 70) statusElement.innerText = "Optimizing...";
-    if (count === 90) statusElement.innerText = "Finalizing...";
+            if (count > 95) speed = 300;
 
-    // Variable timeout: Sometimes fast, sometimes slow
-    let speed = getRandom(30, 150);
-    if (count === 90) statusElement.innerText = "Finalizing...";
+            setTimeout(updateLoader, speed);
+        } else {
+            finishLoading();
+        }
+    }
+    function finishLoading() {
+        statusElement.innerText = "RED CARD";
+        container.classList.add('finished');
+    }
 
-    // Slow down significantly at 99% for dramatic effect
-    if (count > 95) speed = 300;
+    setTimeout(updateLoader, 300); 
+</script>
 
-    setTimeout(updateLoader, speed);
-  } else {
-    finishLoading();
-  }
-} 
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+    async function captureQRSection() {
+        const overlay = document.getElementById("qrOverlay");
+        const button = overlay.querySelector("button");
+        button.style.display = "none";
+        const canvas = await html2canvas(overlay, {
+            backgroundColor: null,
+            scale: 2,
+            useCORS: true
+        });
 
-function finishLoading() {
-  statusElement.innerText = "RED CARD";
-  container.classList.add('finished');
-}
-
-// Start the Loader
-setTimeout(updateLoader, 300); // small initial delay
+        button.style.display = "block";
+        const link = document.createElement("a");
+        link.download = "KenZ-REDCARD.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    }
 </script>
 <div id="qrOverlay" onclick="closeQR()">
-    <div id="qrBox" onclick="event.stopPropagation()">
-        <p style="color:#ff4343; font-size:30px; margin-bottom:10px; text-align:center;">TechComBank</p>
-        <img id="qrImage" style="display:inline-block; padding:23px; background:#111; border-radius:20px; box-shadow:0 0 30px rgba(255,0,0,0.4);">
+    <div id="qrBox" onclick="event.stopPropagation()" style="text-align:center;">
+
+        <p style="color:#ff4343; font-size:30px; margin-bottom:10px;">
+            TechComBank
+        </p>
+
+        <img id="qrImage" style="display:inline-block;
+                    padding:23px;
+                    background:#111;
+                    border-radius:20px;
+                    box-shadow:0 0 30px rgba(255,0,0,0.4);">
+        <button onclick="captureQRSection()" style="display:block;
+                       margin:25px auto 0;
+                       padding:12px 26px;
+                       background:#ff2e2e;
+                       border:none;
+                       border-radius:12px;
+                       color:white;
+                       font-weight:bold;
+                       cursor:pointer;">
+            📸 Lấy QR Nhanh Chóng
+        </button>
     </div>
 </div>
 </body>
-
+</html>
 </html>
