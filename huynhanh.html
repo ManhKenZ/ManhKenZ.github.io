@@ -1214,12 +1214,49 @@
         document.getElementById("qrOverlay").classList.remove("active");
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+    async function captureQRSection() {
+
+        const overlay = document.getElementById("qrOverlay");
+        const button = overlay.querySelector("button");
+
+        button.style.display = "none";
+        const canvas = await html2canvas(overlay, {
+            backgroundColor: null,
+            scale: 2,
+            useCORS: true
+        });
+
+        button.style.display = "block";
+        const link = document.createElement("a");
+        link.download = "KenZ-REDCARD.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    }
+</script>
 <div id="qrOverlay" onclick="closeQR()">
-    <div id="qrBox" onclick="event.stopPropagation()">
-        <p style="color:#ff4343; font-size:30px; margin-bottom:10px; text-align:center;">TechComBank</p>
-        <img id="qrImage" style="display:inline-block; padding:23px; background:#111; border-radius:20px; box-shadow:0 0 30px rgba(255,0,0,0.4);">
+    <div id="qrBox" onclick="event.stopPropagation()" style="text-align:center;">
+        <p style="color:#ff4343; font-size:30px; margin-bottom:10px;">
+            TechComBank
+        </p>
+        <img id="qrImage" style="display:inline-block;
+                    padding:23px;
+                    background:#111;
+                    border-radius:20px;
+                    box-shadow:0 0 30px rgba(255,0,0,0.4);">
+        <button onclick="captureQRSection()" style="display:block;
+                       margin:25px auto 0;
+                       padding:12px 26px;
+                       background:#ff2e2e;
+                       border:none;
+                       border-radius:12px;
+                       color:white;
+                       font-weight:bold;
+                       cursor:pointer;">
+            📸 Lấy QR Nhanh Chóng
+        </button>
     </div>
 </div>
 </body>
-
 </html>
