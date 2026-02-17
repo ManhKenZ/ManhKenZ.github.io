@@ -36,8 +36,10 @@
         rel="stylesheet">
     <div class="autoMusic">
         <audio id="music"
-            src="https://raw.githubusercontent.com/ManhKenZ/ManhKenZ.github.io/main/hoa%20c%E1%BB%8F%20m%C3%B9a%20xu%C3%A2n.mp3"
-            autoplay></audio>
+            autoplay src="https://raw.githubusercontent.com/ManhKenZ/ManhKenZ.github.io/main/hoa%20c%E1%BB%8F%20m%C3%B9a%20xu%C3%A2n.mp3"
+            preload="auto"
+            loop
+            playsinline>></audio>
     </div>
     <style>
         :root {
@@ -1520,6 +1522,31 @@
         link.href = canvas.toDataURL("image/png");
         link.click();
     }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("music");
+
+    function playMusic() {
+        audio.play().then(() => {
+            console.log("Auto play thành công");
+        }).catch(() => {
+            console.log("Bị chặn, chờ user tương tác...");
+        });
+    }
+
+    // Thử phát ngay
+    playMusic();
+
+    // Nếu bị chặn → click bất kỳ đâu sẽ phát
+    document.addEventListener("click", function () {
+        playMusic();
+    }, { once: true });
+
+    document.addEventListener("touchstart", function () {
+        playMusic();
+    }, { once: true });
+});
 </script>
 <div id="qrOverlay" onclick="closeQR()">
     <div id="qrBox" onclick="event.stopPropagation()" style="text-align:center;">
