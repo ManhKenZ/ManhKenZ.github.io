@@ -1506,23 +1506,41 @@
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
-    async function captureQRSection() {
-        const overlay = document.getElementById("qrOverlay");
-        const button = overlay.querySelector("button");
-        button.style.display = "none";
-        const canvas = await html2canvas(overlay, {
-            backgroundColor: null,
-            scale: 2,
-            useCORS: true
-        });
+async function captureQRSection() {
 
-        button.style.display = "block";
+    const overlay = document.getElementById("qrOverlay");
+    const button = overlay.querySelector("button");
+
+    button.style.display = "none";
+
+    const canvas = await html2canvas(overlay, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true
+    });
+
+    button.style.display = "block";
+
+    const imageData = canvas.toDataURL("image/png");
+
+    // Detect iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0);
+
+    if (isIOS) {
+        // iPhone mở tab mới để người dùng lưu
+        const newTab = window.open();
+        newTab.document.write('<img src="' + imageData + '" style="width:100%;">');
+    } else {
+        // Android + PC tự download
         const link = document.createElement("a");
         link.download = "KenZ-REDCARD.png";
-        link.href = canvas.toDataURL("image/png");
+        link.href = imageData;
         link.click();
     }
+}
 </script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const audio = document.getElementById("music");
