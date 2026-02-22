@@ -1175,28 +1175,28 @@
         }, 1500);
     }
 
-function openZalo() {
-    const username = "0362638966";
-    const appLink = "zalo://profile/" + username;
-    const webLink = "https://zalo.me/" + username;
-
-    let opened = false;
-
-    const timeout = setTimeout(function () {
-        if (!opened) {
-            window.location.href = webLink;
-        }
-    }, 2000);
-
-    document.addEventListener("visibilitychange", function () {
-        if (document.hidden) {
-            opened = true;
-            clearTimeout(timeout);
-        }
-    });
-
-    window.location.href = appLink;
-}
+    function openZalo() {
+        const username = "0362638966";
+        const appLink = "zalo://profile/" + username;
+        const webLink = "https://zalo.me/" + username;
+    
+        let opened = false;
+    
+        const timeout = setTimeout(function () {
+            if (!opened) {
+                window.location.href = webLink;
+            }
+        }, 2000);
+    
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) {
+                opened = true;
+                clearTimeout(timeout);
+            }
+        });
+    
+        window.location.href = appLink;
+    }
 </script>
 <script>
     const banks = {
