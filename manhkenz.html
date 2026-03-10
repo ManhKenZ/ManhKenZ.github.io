@@ -36,7 +36,7 @@
         rel="stylesheet">
     <div class="autoMusic">
         <audio id="music"
-            autoplay src="https://raw.githubusercontent.com/ManhKenZ/ManhKenZ.github.io/main/hoa%20c%E1%BB%8F%20m%C3%B9a%20xu%C3%A2n.mp3"
+            autoplay src="https://raw.githubusercontent.com/vip-redcard/vip-redcard.github.io/main/music/tranbonho.mp3"
             preload="auto"
             loop
             playsinline>></audio>
@@ -49,7 +49,7 @@
             --muted: #ffffff;
             --primary: #df0a0a;
             --secondary: #8412c667;
-            --accent: #a812a1;
+            --accent: #771072;
             --accent2: #b72323;
         }
 
@@ -693,6 +693,9 @@
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 0, .3);
+            position: relative;
+            overflow: hidden;
 
         }
 
@@ -701,6 +704,26 @@
             box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
             border-color: var(--primary);
         }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+      transition: left 0.6s;
+    }
+
+    .feature-card:hover::before {
+      left: 100%;
+    }
+
+    .feature-card:active {
+      transform: scale(0.98);
+    }
+
 
         .feature-icon {
             font-size: 2.5rem;
@@ -1167,6 +1190,31 @@
             visibility: hidden;
             pointer-events: none;
         }
+
+                .confirm-btn {
+            margin-top: 25px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #ff2e2e, #ff4d4d);
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.35);
+            transition: all 0.25s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .confirm-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 0, 0, 0.5);
+        }
+
+        .confirm-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+        }
     </style>
 </head>
 
@@ -1193,7 +1241,7 @@
         <div class="header">
             <div class="main-logo-container">
                 <div class="main-logo-ring"></div>
-                <img src="https://a.top4top.io/p_3697gidex1.png" class="main-logo" alt="RED CARD Logo">
+                <img src="https://raw.githubusercontent.com/vip-redcard/vip-redcard.github.io/main/image/avt1.png" class="main-logo" alt="RED CARD Logo">
             </div>
         </div>
         <div>
@@ -1250,19 +1298,38 @@
                     <div class="feature-card" onclick="openZalo()" style="cursor:pointer;">
                         <h4 class="feature-icon"
                             style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                            <img src="zalo.svg" alt="Zalo"
-                                style="width:40px; height:40px; object-fit:contain;  filter: invert(16%) sepia(100%) saturate(7000%) hue-rotate(0deg);">
-                            Zalo
+                            <img src="image/zalo.svg" alt="Zalo"
+                                style="width:60px; height:60px; object-fit:contain; filter: invert(16%) sepia(100%) saturate(7000%) hue-rotate(0deg);">
+                        </h4>
+                        <h4 class="feature-title"
+                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Zalo</h4>
+                    </div>
+
+                    <div class="feature-card" onclick="createQR('bidv')" style="cursor:pointer;">
+                        <div class="feature-icon" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <i class="fas fa-bank"></i>
+                        </div>
+                        <h4 class="feature-title" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            VietinBank
                         </h4>
                     </div>
 
-                    <div class="feature-card" onclick="createQR()" style="cursor:pointer;">
-                        <div class="feature-icon"
-                            style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                            <i class="fas fa-gift"></i>
+                    <div class="feature-card" onclick="createQR('vietcom')" style="cursor:pointer;">
+                        <div class="feature-icon" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <i class="fas fa-bank"></i>
                         </div>
-                        <h4 class="feature-title"
-                            style="display:flex; align-items:center; justify-content:center; gap:10px;">Tặng Quà</h4>
+                        <h4 class="feature-title" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            VietcomBank
+                        </h4>
+                    </div>
+
+                    <div class="feature-card" onclick="createQR('vietin')" style="cursor:pointer;">
+                        <div class="feature-icon" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <i class="fas fa-bank"></i>
+                        </div>
+                        <h4 class="feature-title" style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                            MB Bank
+                        </h4>
                     </div>
                     <div id="qrContainer" style="margin-top:20px; text-align:center;"></div>
                 </div>
@@ -1328,78 +1395,26 @@
     });
 </script>
 <script>
-    function createSnowflake() {
-        const snowflake = document.createElement('div');
-        snowflake.textContent = '🌸';
-        snowflake.classList.add('snowflake');
-
-        // Tạo vị trí, kích thước, tốc độ rơi và độ mờ ngẫu nhiên
-        const size = Math.random() * 20 + 5;
-        const duration = Math.random() * 5 + 5; // 5–10s
-        const delay = Math.random() * 3;
-        const opacity = Math.random() * 0.7 + 0.3;
-
-        snowflake.style.left = Math.random() * 100 + 'vw';
-        snowflake.style.fontSize = size + 'px';
-        snowflake.style.opacity = opacity;
-        snowflake.style.animationDuration = duration + 's';
-        snowflake.style.animationDelay = delay + 's';
-
-        document.body.appendChild(snowflake);
-
-        // Xóa khi rơi xong để tránh đầy bộ nhớ
-        snowflake.addEventListener('animationend', () => snowflake.remove());
-    }
-
-    // CSS hiệu ứng rơi và đung đưa
-    const style = document.createElement('style');
-    style.textContent = `
-    .snowflake {
-      position: fixed;
-      top: -5%;
-      color: white;
-      pointer-events: none;
-      user-select: none;
-      z-index: 9999;
-      animation-name: fallAndSway;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: 1;
-    }
-
-    @keyframes fallAndSway {
-      0% {
-        transform: translateX(0vw) translateY(0vh) rotate(0deg);
-      }
-      25% {
-        transform: translateX(10vw) translateY(25vh) rotate(90deg);
-      }
-      50% {
-        transform: translateX(-10vw) translateY(50vh) rotate(180deg);
-      }
-      75% {
-        transform: translateX(10vw) translateY(75vh) rotate(270deg);
-      }
-      100% {
-        transform: translateX(-10vw) translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }`;
-    document.head.appendChild(style);
-
-    setInterval(createSnowflake, 50);
-</script>
-<script>
     function openTikTok() {
-        const username = "pmanh8386";
-        const appLink = "tiktok://user?username=" + username;
-        const webLink = "https://www.tiktok.com/@" + username;
-        window.location.href = appLink;
 
-        setTimeout(function () {
-            window.location.href = webLink;
-        }, 1500);
+        const isMobile =
+            /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        const appLink =
+            "https://www.tiktokv.com/redirect/?redirect_url=snssdk1180://user/profile/7030812343152624641;decode_once=1";
+
+        const webLink =
+            "https://www.tiktok.com/@pmanh8386";
+
+        if (isMobile) {
+            // Mobile → mở app TikTok
+            window.location.href = appLink;
+        } else {
+            // PC → mở website
+            window.open(webLink, "_blank");
+        }
     }
-
+    
     function openFacebook() {
         const username = "100087890537475";
         const appLink = "fb://profile/" + username;
@@ -1412,15 +1427,13 @@
     }
 
     function openZalo() {
-        const username = "0395904226";
-        const appLink = "zalo://profile/" + username;
-        const webLink = "https://zalo.me/" + username;
-        let opened = false;
-        const timeout = setTimeout(function () {
-            if (!opened) {
-                window.location.href = webLink;
-            }
-        }, 2000);
+        const zaloScheme = "zalo://qr/p/gwcqzzhv2idj"; 
+        const fallback = "https://zaloapp.com/qr/p/gwcqzzhv2idj"; 
+        window.location.href = zaloScheme;
+
+        setTimeout(() => {
+            window.location.href = fallback;
+        }, 80);
     
         document.addEventListener("visibilitychange", function () {
             if (document.hidden) {
@@ -1433,124 +1446,125 @@
     }
 </script>
 <script>
-    async function createQR() {
+const counterElement = document.getElementById('counter');
+const statusElement = document.getElementById('status');
+const container = document.getElementById('loaderContainer');
 
-        const name = "Mạnh";
+let count = 0;
 
-        const apiURL = "https://script.google.com/macros/s/AKfycby-M_qQ7L7VXZCXZO8G7jAE8RHQUHCCq7_PDpXJ9oWmn-DPtsLX5pBUHNjO9ASPJ04e/exec?name="
-            + encodeURIComponent(name);
+function updateLoader() {
 
-        try {
-
-            const response = await fetch(apiURL);
-            const data = await response.json();
-
-            if (data.status !== "success") {
-
-                alert("Chưa có mã QR cho người này.");
-                return;
-            }
-
-            const maCode = data.maCode;
-
-            const qrURL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
-                + encodeURIComponent(maCode);
-
-            document.getElementById("qrImage").src = qrURL;
-
-            document.getElementById("qrOverlay").classList.add("active");
-
-        } catch (error) {
-            console.error(error);
-            alert("Lỗi kết nối API.");
-        }
+    if (count >= 100) {
+        finishLoading();
+        return;
     }
 
-    function closeQR() {
-        document.getElementById("qrOverlay").classList.remove("active");
-    }
-</script>
-<script>
-    const counterElement = document.getElementById('counter');
+    // tốc độ theo giai đoạn (realistic loading)
+    let speed;
 
-    const statusElement = document.getElementById('status');
-
-    const container = document.getElementById('loaderContainer');
-
-    let count = 0;
-
-
-    function getRandom(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
+    if (count < 30) {
+        speed = 30;          // chậm lại giai đoạn giữa
+    } else if (count < 70) {
+        speed = 45;
+    } else if (count < 90) {
+        speed = 50;
+    } else {
+        speed = 120;         // chậm dần cuối
     }
 
-    function updateLoader() {
-        if (count < 100) {
+    // tăng %
+    count += 1;
+    counterElement.innerText = count + "%";
 
-            // Increment by random amount (1-3) to simulate real data
-            let increment = (Math.random() > 0.8) ? 2 : 1;
-            count = Math.min(count + increment, 100);
-            counterElement.innerText = count + '%';
+    // đổi trạng thái
+    if (count === 30)
+        statusElement.innerText = "Verifying...";
 
-            if (count === 30) statusElement.innerText = "Verifying...";
-            if (count === 70) statusElement.innerText = "Optimizing...";
-            if (count === 90) statusElement.innerText = "Finalizing...";
+    if (count === 70)
+        statusElement.innerText = "Optimizing...";
 
-            let speed = getRandom(30, 150);
-            if (count === 90) statusElement.innerText = "Finalizing...";
+    if (count === 90)
+        statusElement.innerText = "Finalizing...";
 
-            if (count > 95) speed = 300;
+    setTimeout(updateLoader, speed);
+}
 
-            setTimeout(updateLoader, speed);
-        } else {
-            finishLoading();
-        }
-    }
-    function finishLoading() {
-        statusElement.innerText = "RED CARD";
+function finishLoading() {
+    statusElement.innerText = "RED CARD";
+    statusElement.style.fontSize = "45px";
+    statusElement.style.top = "150px";
+    statusElement.style.fontWeight = "bold";
+    statusElement.style.left = "50%";
+    statusElement.style.transform = "translateX(-50%)";
+    statusElement.style.whiteSpace = "nowrap";
+
+    setTimeout(() => {
         container.classList.add('finished');
-    }
+    }, 300);
+}
 
-    setTimeout(updateLoader, 300); 
+// start
+setTimeout(updateLoader, 200);
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
-async function captureQRSection() {
+    const banks = {
+        bidv: {
+            name: "admin1",
+            label: "VietinBank"
+        },
+        vietcom: {
+            name: "admin2",
+            label: "VietcomBank"
+        },
+        vietin: {
+            name: "admin3",
+            label: "MB Bank"
+        }
+    };
 
-    const overlay = document.getElementById("qrOverlay");
-    const button = overlay.querySelector("button");
+</script>
+<script>
+async function createQR(bankKey) {
 
-    button.style.display = "none";
+    const bank = banks[bankKey];
+    if (!bank) return;
 
-    const canvas = await html2canvas(overlay, {
-        backgroundColor: null,
-        scale: 2,
-        useCORS: true
-    });
+    const apiURL =
+        "https://script.google.com/macros/s/AKfycby-M_qQ7L7VXZCXZO8G7jAE8RHQUHCCq7_PDpXJ9oWmn-DPtsLX5pBUHNjO9ASPJ04e/exec?name="
+        + encodeURIComponent(bank.name);
 
-    button.style.display = "block";
+    try {
 
-    const imageData = canvas.toDataURL("image/png");
+        const response = await fetch(apiURL);
+        const data = await response.json();
 
-    // Detect iOS
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 0);
+        if (data.status !== "success") {
+            alert("Chưa có mã QR cho người này.");
+            return;
+        }
 
-    if (isIOS) {
-        // iPhone mở tab mới để người dùng lưu
-        const newTab = window.open();
-        newTab.document.write('<img src="' + imageData + '" style="width:100%;">');
-    } else {
-        // Android + PC tự download
-        const link = document.createElement("a");
-        link.download = "KenZ-REDCARD.png";
-        link.href = imageData;
-        link.click();
+        const qrURL =
+            "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
+            + encodeURIComponent(data.maCode);
+
+        // Đổi ảnh QR
+        document.getElementById("qrImage").src = qrURL;
+
+        // 🔥 Đổi luôn tên ngân hàng
+        document.getElementById("bankName").innerText = bank.label;
+
+        document.getElementById("qrOverlay").classList.add("active");
+
+    } catch (error) {
+        console.error(error);
+        alert("Lỗi kết nối API.");
     }
 }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const audio = document.getElementById("music");
@@ -1576,31 +1590,90 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { once: true });
 });
 </script>
+<script>
+function closeQR(){
+    document.getElementById("overlay").style.display = "none";
+}
+
+name = "Mạnh Nguyễn";
+async function captureOptimized() {
+
+    const qrBox = document.getElementById("qrBox");
+    const btn = document.getElementById("saveBtn");
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    try {
+
+        btn.style.display = "none";
+
+        const canvas = await html2canvas(qrBox, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#000"
+        });
+
+        const imageData = canvas.toDataURL("image/png");
+
+        if (isIOS) {
+
+            qrBox.innerHTML = `
+                <img src="${imageData}" 
+                     style="width:100%; border-radius:20px; display:block;">
+                <button class="confirm-btn" 
+                        style="margin-top:20px;">
+                    Iphone cần giữ ảnh để lưu
+                </button>
+            `;
+
+        } else {
+
+            const link = document.createElement("a");
+            link.download = name + " Banking_REDCARD.png";
+            link.href = imageData;
+            link.click();
+
+            // Android: đóng popup luôn
+            closeQR();
+        }
+
+    } catch (error) {
+        console.error(error);
+        btn.style.display = "inline-block";
+    }
+}
+</script>
+
 <div id="qrOverlay" onclick="closeQR()">
     <div id="qrBox" onclick="event.stopPropagation()" style="text-align:center;">
 
-        <p style="color:#ff4343; font-size:30px; margin-bottom:10px;">
-            TechComBank
+        <p id="bankName"
+           style="color:#ff4343; font-size:30px; margin-bottom:10px;">
+            VietTinBank
         </p>
-
         <img id="qrImage" style="display:inline-block;
                     padding:23px;
                     background:#111;
                     border-radius:20px;
                     box-shadow:0 0 30px rgba(255,0,0,0.4);">
-        <button onclick="captureQRSection()" style="display:block;
-                       margin:25px auto 0;
-                       padding:12px 26px;
-                       background:#ff2e2e;
-                       border:none;
-                       border-radius:12px;
-                       color:white;
-                       font-weight:bold;
-                       cursor:pointer;">
-            📸 Lấy QR Nhanh Chóng
+        <br>
+        <button id="saveBtn" class="confirm-btn" onclick="captureOptimized()" style="text-align:center;">
+            Lưu
         </button>
     </div>
 </div>
+<script>
+    const overlay = document.getElementById("qrOverlay");
+
+    function openQR() {
+        overlay.classList.add("active");
+    }
+
+    function closeQR() {
+        overlay.classList.remove("active");
+    }
+
+</script>
 </body>
-</html>
 </html>
